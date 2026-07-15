@@ -4,7 +4,7 @@ import {BellIcon} from "lucide-react";
 import userImg from "../../public/images/admin.jpg"
 export default function  Header(){
 
-    return <header className={"bg-[#1e1e1e] mt-6 border border-b mx-4 sm:mx-6 lg:mx-8 border-[#1f1f1f] rounded-lg shadow-lg "}>
+    return <header className={"bg-[#1e1e1e] mt-6 border border-b mx-4 sm:mx-6 lg:mx-8 border-[#1f1f1f] rounded-lg shadow-lg mb-4 "}>
         <div className={"mx-auto max-w-7xl py-4 px-4 sm:px-6 flex items-center justify-between text-white"}>
             <h1 className={"text-white text-lg sm:text-xl lg:text-2xl font-extrabold"}>
                 Dashboard

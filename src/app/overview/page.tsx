@@ -3,6 +3,10 @@
 import CardComponent from "@/components/CardComponent";
 import {ActivitySquare, DollarSign, ShoppingBag, User} from "lucide-react";
 import {motion} from "framer-motion";
+import SalesChartOverview from "@/components/SalesChartOverview";
+import CategoryOverview from "@/components/CategoryOverview";
+import OrderStatusOverview from "@/components/OrderStatusOverview";
+import ProductPerfOverview from "@/components/ProductPerfOverview";
 
 export default function OverviewPage(){
 
@@ -21,6 +25,13 @@ export default function OverviewPage(){
                     <CardComponent name={"Total Product"} value={"674"} icon={ShoppingBag} />
                     <CardComponent name={"Stocks"} value={"12,845"} icon={ActivitySquare} />
                 </motion.div>
+
+                <div className={"grid  lg:grid-cols-2 grid-cols-1 gap-8"}>
+                    <SalesChartOverview  />
+                    <CategoryOverview/>
+                    <OrderStatusOverview/>
+                    <ProductPerfOverview/>
+                </div>
             </main>
         </div>
     )

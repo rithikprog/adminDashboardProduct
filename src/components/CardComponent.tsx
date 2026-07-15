@@ -16,7 +16,7 @@ export default function CardComponent({name,icon:Icon,value}: CardComponentProps
                     <Icon className={"mr-2"} />
                     {name}
                 </span>
-                <p className={"flex text-3xl"}>
+                <p className={"flex mt-2 text-3xl"}>
                     {
                         value
                     }
