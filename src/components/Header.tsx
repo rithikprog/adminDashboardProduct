@@ -9,7 +9,7 @@ export default function  Header(){
             <h1 className={"text-white text-lg sm:text-xl lg:text-2xl font-extrabold"}>
                 Dashboard
             </h1>
-            <div className={"flex items-center sm:space-x-6 space-x-3"}>
+            <div className={"flex items-center sm:space-x-6 space-x-3 opacity-0 sm:opacity-100"}>
                 <Image src={cImage} alt={"countryImage"} className={"w-fit h-fit " }  width={25} height={18} />
                 <div className={"relative"}>
                     <BellIcon/>

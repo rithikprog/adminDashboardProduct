@@ -28,6 +28,25 @@ export  default function Sidebar(){
     const [sidebar,setSidebar] = useState<SidebarItem[]>([]);
     const [sidebarOpen,setSidebarOpen] = useState(true);
 
+    const checkSideandWidth = () => {
+        if (window.innerWidth < 550) {
+            setSidebarOpen(false);
+        }else if (window.innerWidth > 600) {
+            setSidebarOpen(true);
+        }
+    };
+
+    useEffect(() => {
+        checkSideandWidth();
+
+        window.addEventListener("resize", checkSideandWidth);
+
+        return () => {
+            window.removeEventListener("resize", checkSideandWidth);
+        };
+    }, []);
+
+
     useEffect(() => {
         fetch("/data/data.json")
             .then((res)=>res.json())
@@ -35,7 +54,7 @@ export  default function Sidebar(){
     }, []);
 
     return (
-        <div className={`relative ${sidebarOpen?"w-64":"w-20"}  transition-all ease-in-out duration-300 flex-shrink-0`}>
+        <div className={`relative ${sidebarOpen?"w-64":"w-20"}   transition-all ease-in-out duration-300 flex-shrink-0`}>
             <div className={"h-full  flex flex-col p-4  bg-[#1e1e1e] backdrop-blur-md border-r border-[#2f2f2f] "}>
                 <button className={"p-2 transition-colors hover:bg-[#2f2f2f] rounded-full max-w-fit cursor-pointer"} onClick={()=>setSidebarOpen(!sidebarOpen)}>
                     <Menu width={24} height={24} />

@@ -1,10 +1,8 @@
+import OverviewPage from "@/app/overview/page";
 
 
 export default function Home(){
   return(
-
-      <div className={""}>
-
-      </div>
+      <OverviewPage/>
   )
 }
