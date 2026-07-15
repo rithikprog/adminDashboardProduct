@@ -5,15 +5,22 @@ import productData from "../../public/data/data.json";
 import Image from "next/image";
 import {Edit, Save, Search, Trash2} from "lucide-react";
 
-interface Props {
-    id: number;
-    value: string;
-    field:string;
-    item:string;
+interface Product {
+    id: string;
+    name: string;
+    category: string;
+    price: number;
+    sales: number;
+    stock: number;
+    image: string;
 }
 export  default function ProductTableSection(){
     const [products, setProducts] = useState(productData.products);
     const [searchTerm, setSearchTerm] = useState("");
+
+    type EditableField = "price" | "sales" | "stock";
+    const editableFields: EditableField[] = ["price", "sales", "stock"];
+
     const filterProducts = useMemo(()=>{
         return products.filter(
             (product)=>
@@ -21,9 +28,9 @@ export  default function ProductTableSection(){
         )
     },[searchTerm,products])
 
-    const [editingRow,setEditingRow] = useState(null);
+    const [editingRow,setEditingRow] = useState<string | null>(null);
 
-    const handleEditClick = (id)=>{
+    const handleEditClick = (id:string)=>{
         setEditingRow(id);
     }
 
@@ -32,7 +39,7 @@ export  default function ProductTableSection(){
     }
 
 
-    const handleChange = (id,field,value)=>{
+    const handleChange = (id:string,field:EditableField,value:string)=>{
         setProducts((prevProducts)=>
             prevProducts.map((product)=>
                 product.id === id ? {...product,[field]:Number(value)}:product))
@@ -111,7 +118,7 @@ export  default function ProductTableSection(){
                                         </div>
                                         <div className={"text-sm text-gray-300"}>
                                             <div>{product.category}</div>
-                                            {["price","sales","stock"].map((item)=>(
+                                            {editableFields.map((item)=>(
                                                 <div key={item} className={""} >
                                                     <span>
                                                         {item}
@@ -147,7 +154,7 @@ export  default function ProductTableSection(){
                                     <td className={"hidden md:table-cell whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-100"}>
                                         {product.category}
                                     </td>
-                                    {["price","sales","stock"].map((item)=>(
+                                    {editableFields.map((item)=>(
                                         <td key={item} className={`hidden md:table-cell whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-100 ${editingRow === product.id ? "border border-gray-400":""}`}>
                                             {
                                                 editingRow === product.id?
